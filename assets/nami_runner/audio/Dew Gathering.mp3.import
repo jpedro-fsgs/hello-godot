@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1wku0phifiby"
+path="res://.godot/imported/Dew Gathering.mp3-f2dd0071a50081f5a2a6901c7beea19a.mp3str"
+
+[deps]
+
+source_file="res://assets/nami_runner/audio/Dew Gathering.mp3"
+dest_files=["res://.godot/imported/Dew Gathering.mp3-f2dd0071a50081f5a2a6901c7beea19a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
