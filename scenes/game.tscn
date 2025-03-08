@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://c0c6cn15tv4pf"]
+[gd_scene load_steps=10 format=4 uid="uid://c0c6cn15tv4pf"]
 
 [ext_resource type="PackedScene" uid="uid://dovg3nsjdgcbp" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dppx03laogjgl" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dpufaw5emjjur" path="res://scenes/platform.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://pngfcefqju00" path="res://scenes/coin.tscn" id="4_2xyu4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("2_yqjtg")
@@ -161,7 +162,6 @@ sources/0 = SubResource("TileSetAtlasSource_yqjtg")
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
 resource_name = "Move"
-length = 2.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -170,10 +170,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.96667),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-141, -141), Vector2(249, -141)]
+"values": [Vector2(-141, -219), Vector2(-311, -219)]
 }
 
 [sub_resource type="Animation" id="Animation_lbhrr"]
@@ -193,8 +193,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iywne"]
 _data = {
-&"Move": SubResource("Animation_lnu2h"),
-&"RESET": SubResource("Animation_lbhrr")
+"Move": SubResource("Animation_lnu2h"),
+"RESET": SubResource("Animation_lbhrr")
 }
 
 [node name="Game" type="Node2D"]
@@ -207,29 +207,134 @@ position = Vector2(0, -5)
 zoom = Vector2(4, 4)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD3/wEAAAAAAAAAAAD4/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAD1//v/AAABAAAAAAD1//z/AAABAAAAAAD1//3/AAABAAAAAAD1//7/AAABAAAAAAD1////AAABAAAAAAD1/wAAAAABAAAAAAD1/wEAAAABAAAAAAD1/wIAAAABAAAAAAD1/wMAAAABAAAAAAD1/wQAAAABAAAAAAD1/wUAAAABAAAAAAD1/wYAAAABAAAAAAD1/wcAAAABAAAAAAD2/wcAAAABAAAAAAD3/wcAAAABAAAAAAD4/wcAAAABAAAAAAD5/wcAAAABAAAAAAD6/wcAAAABAAAAAAD7/wcAAAABAAAAAAD8/wcAAAABAAAAAAD9/wcAAAABAAAAAAD+/wcAAAABAAAAAAD//wcAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAACAAQAAAABAAAAAAACAAMAAAABAAAAAAACAAIAAAABAAAAAAAGAAcAAAABAAAAAAAHAAcAAAABAAAAAAAIAAcAAAABAAAAAAAJAAcAAAABAAAAAAAKAAcAAAABAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAAGAAQAAAABAAAAAAAGAAMAAAABAAAAAAAGAAIAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAAAAAD4/wAAAAADAAgAAAD4////AAADAAcAAAD4//7/AAADAAcAAAD4//z/AAACAAQAAAAHAAAAAAAAAAUAAAAHAP//AAAAAAQAAAAHAP7/AAAAAAQAAAAHAP3/AAAAAAQAAAAHAPz/AAAAAAMAAAD3/wMAAAAAAAIAAAD4/wMAAAAAAAIAAAD5/wMAAAAAAAIAAAD8/wEAAAAJAAEAAAATAPv/AAAIAAAAAAATAPz/AAAIAAAAAAATAP3/AAAIAAAAAAATAP7/AAAIAAAAAAATAP//AAAIAAAAAAATAAAAAAAIAAAAAAATAAEAAAAIAAAAAAATAAIAAAAIAAAAAAATAAMAAAAIAAAAAAATAAQAAAAIAAAAAAATAAUAAAAIAAAAAAATAAYAAAAIAAAAAAATAAcAAAAIAAAAAAAMAPn/AAAEAAAAAAALAPn/AAAEAAAAAAAKAPn/AAAEAAAAAAAJAPn/AAAEAAAAAAAIAPn/AAAEAAAAAAAHAPn/AAAEAAAAAAAGAPn/AAAEAAAAAAAEAPn/AAAJAAEAAAACAPn/AAAEAAAAAAABAPn/AAAEAAAAAAAAAPn/AAAEAAAAAAD///n/AAAEAAAAAAD+//n/AAAEAAAAAAD9//n/AAAEAAAAAAD8//n/AAAEAAAAAAD7//n/AAAEAAAAAAD6//n/AAAEAAAAAAD5//n/AAAEAAAAAAD4//n/AAAEAAAAAAD3//n/AAAEAAAAAAD2//n/AAAEAAAAAAD1//n/AAAEAAAAAAD1//r/AAABAAAAAAATAPr/AAAIAAAAAAATAPn/AAAIAAAAAAATAPj/AAAIAAAAAAATAPf/AAAIAAAAAAATAPb/AAAIAAAAAAATAPX/AAAIAAAAAAATAPT/AAAIAAAAAAD0/wcAAAAFAAAAAAD0/wYAAAAFAAAAAAD0/wUAAAAFAAAAAAD0/wQAAAAFAAAAAAD0/wMAAAAFAAAAAAD0/wIAAAAFAAAAAAD0/wEAAAAFAAAAAAD0/wAAAAAFAAAAAAD0////AAAFAAAAAAD0//7/AAAFAAAAAAD0//3/AAAFAAAAAAD0//z/AAAFAAAAAAD0//v/AAAFAAAAAAD0//r/AAAFAAAAAAD0//n/AAAFAAAAAAD0//j/AAAFAAAAAAD0//f/AAAFAAAAAAD0//b/AAAFAAAAAAD0//X/AAAFAAAAAAD0//T/AAAFAAAAAAD0//P/AAAFAAAAAAD0//L/AAAFAAAAAAD0//D/AAAFAAAAAAD0//H/AAAFAAAAAAATAPD/AAAFAAAAAAATAPH/AAAFAAAAAAATAPL/AAAFAAAAAAATAPP/AAAFAAAAAAA=")
+tile_map_data = PackedByteArray("AAD3/wEAAAAAAAAAAAD4/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAD4/wAAAAADAAgAAAD4////AAADAAcAAAD4//7/AAADAAcAAAD4//z/AAACAAQAAAAHAAAAAAAAAAUAAAAHAP//AAAAAAQAAAAHAP7/AAAAAAQAAAAHAP3/AAAAAAQAAAAHAPz/AAAAAAMAAAD8/wEAAAAJAAEAAAD2/wEAAAAAAAAAAAD1/wEAAAAAAAAAAAD0/wEAAAAAAAAAAADz/wEAAAAAAAAAAADy/wEAAAAAAAAAAADx/wEAAAAAAAAAAADw/wEAAAAAAAAAAADv/wEAAAAAAAAAAADu/wEAAAAAAAAAAADt/wEAAAAAAAAAAADs/wEAAAAAAAAAAADr/wEAAAAAAAAAAADq/wEAAAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADk/wIAAAAAAAEAAADl/wIAAAAAAAEAAADm/wIAAAAAAAEAAADn/wIAAAAAAAEAAADo/wIAAAAAAAEAAADp/wIAAAAAAAEAAADq/wIAAAAAAAEAAADr/wIAAAAAAAEAAADs/wIAAAAAAAEAAADt/wIAAAAAAAEAAADu/wIAAAAAAAEAAADv/wIAAAAAAAEAAADw/wIAAAAAAAEAAADx/wIAAAAAAAEAAADy/wIAAAAAAAEAAADz/wIAAAAAAAEAAAD0/wIAAAAAAAEAAAD1/wIAAAAAAAEAAAD2/wIAAAAAAAEAAAD3/wIAAAAAAAEAAAD4/wIAAAAAAAEAAAD5/wIAAAAAAAEAAAD6/wIAAAAAAAEAAAD+/wIAAAAAAAEAAAD//wIAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAAAAAEAAAACAAIAAAAAAAEAAADk/wMAAAAAAAEAAAD6/wMAAAAAAAEAAAD6/wQAAAAAAAEAAADk/wQAAAAAAAEAAADl/wQAAAAAAAEAAADm/wQAAAAAAAEAAADn/wQAAAAAAAEAAADo/wQAAAAAAAEAAADp/wQAAAAAAAEAAADq/wQAAAAAAAEAAADr/wQAAAAAAAEAAADs/wQAAAAAAAEAAADt/wQAAAAAAAEAAADu/wQAAAAAAAEAAADv/wQAAAAAAAEAAADw/wQAAAAAAAEAAADx/wQAAAAAAAEAAADy/wQAAAAAAAEAAADz/wQAAAAAAAEAAAD0/wQAAAAAAAEAAAD1/wQAAAAAAAEAAAD2/wQAAAAAAAEAAAD3/wQAAAAAAAEAAAD4/wQAAAAAAAEAAAD5/wQAAAAAAAEAAAD5/wMAAAAAAAEAAAD4/wMAAAAAAAEAAAD3/wMAAAAAAAEAAAD2/wMAAAAAAAEAAAD1/wMAAAAAAAEAAAD0/wMAAAAAAAEAAADz/wMAAAAAAAEAAADy/wMAAAAAAAEAAADx/wMAAAAAAAEAAADw/wMAAAAAAAEAAADn/wMAAAAAAAEAAADm/wMAAAAAAAEAAADl/wMAAAAAAAEAAADo/wMAAAAAAAEAAADp/wMAAAAAAAEAAADq/wMAAAAAAAEAAADr/wMAAAAAAAEAAADs/wMAAAAAAAEAAADt/wMAAAAAAAEAAADu/wMAAAAAAAEAAADv/wMAAAAAAAEAAAD+/wMAAAAAAAEAAAD//wMAAAAAAAEAAAAAAAMAAAAAAAEAAAABAAMAAAAAAAEAAAACAAMAAAAAAAEAAAD+/wQAAAAAAAEAAAD//wQAAAAAAAEAAAAAAAQAAAAAAAEAAAABAAQAAAAAAAEAAAACAAQAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAIAAIAAAAAAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAEAAAALAAIAAAAAAAEAAAAGAAMAAAAAAAEAAAAHAAMAAAAAAAEAAAAIAAMAAAAAAAEAAAAJAAMAAAAAAAEAAAAKAAMAAAAAAAEAAAALAAMAAAAAAAEAAAAGAAQAAAAAAAEAAAAHAAQAAAAAAAEAAAAIAAQAAAAAAAEAAAAJAAQAAAAAAAEAAAAKAAQAAAAAAAEAAAALAAQAAAAAAAEAAADk/wUAAAABAAAAAADl/wUAAAABAAAAAADm/wUAAAABAAAAAADn/wUAAAABAAAAAADo/wUAAAABAAAAAADp/wUAAAABAAAAAADq/wUAAAABAAAAAADr/wUAAAABAAAAAADs/wUAAAABAAAAAADt/wUAAAABAAAAAADu/wUAAAABAAAAAADv/wUAAAABAAAAAADw/wUAAAABAAAAAADx/wUAAAABAAAAAADy/wUAAAABAAAAAADz/wUAAAABAAAAAAD0/wUAAAABAAAAAAD1/wUAAAABAAAAAAD2/wUAAAABAAAAAAD3/wUAAAABAAAAAAD4/wUAAAABAAAAAAD5/wUAAAABAAAAAAD6/wUAAAABAAAAAAD+/wUAAAABAAAAAAD//wUAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAABAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAPAPr/AAAAAAAAAAAQAPr/AAAAAAAAAAARAPr/AAAAAAAAAAASAPr/AAAAAAAAAAAPAPv/AAAAAAEAAAAQAPv/AAAAAAEAAAARAPv/AAAAAAEAAAASAPv/AAAAAAEAAAAPAPz/AAABAAAAAAAQAPz/AAABAAAAAAARAPz/AAABAAAAAAASAPz/AAABAAAAAAAJAPL/AAAEAAAAAAAIAPL/AAAEAAAAAAAHAPL/AAAEAAAAAAAGAPL/AAAEAAAAAAAFAPL/AAAEAAAAAAAEAPL/AAAEAAAAAAADAPL/AAAEAAAAAAACAPL/AAAEAAAAAAAJAPP/AAAEAAEAAAAIAPP/AAAEAAEAAAAHAPP/AAAEAAEAAAAGAPP/AAAEAAEAAAAFAPP/AAAEAAEAAAAEAPP/AAAEAAEAAAADAPP/AAAEAAEAAAACAPP/AAAEAAEAAAABAPP/AAAEAAEAAAAAAPP/AAAEAAEAAAD///P/AAAEAAEAAAD+//P/AAAEAAEAAAD9//P/AAAEAAEAAAD8//P/AAAEAAEAAAD7//P/AAAEAAEAAAD6//P/AAAEAAEAAAD5//P/AAAEAAEAAAABAPL/AAAEAAAAAAAAAPL/AAAEAAAAAAD///L/AAAEAAAAAAD+//L/AAAEAAAAAAD9//L/AAAEAAAAAAD8//L/AAAEAAAAAAD7//L/AAAEAAAAAAD6//L/AAAEAAAAAAD5//L/AAAEAAAAAAAFAPH/AAAFAAUAAAAFAPD/AAAFAAQAAAAFAO//AAAFAAMAAADk//L/AAAEAAAAAADl//L/AAAEAAAAAADm//L/AAAEAAAAAADn//L/AAAEAAAAAADo//L/AAAEAAAAAADp//L/AAAEAAAAAADq//L/AAAEAAAAAADk//P/AAAEAAEAAADl//P/AAAEAAEAAADm//P/AAAEAAEAAADn//P/AAAEAAEAAADo//P/AAAEAAEAAADp//P/AAAEAAEAAADq//P/AAAEAAEAAADk//T/AAAEAAEAAADl//T/AAAEAAEAAADm//T/AAAEAAEAAADn//T/AAAEAAEAAADo//T/AAAEAAEAAADp//T/AAAEAAEAAADq//T/AAAEAAEAAADk/+3/AAAEAAIAAADm/+3/AAAEAAIAAADo/+3/AAAEAAIAAADl/+j/AAAEAAIAAADn/+j/AAAEAAIAAAAPAPP/AAABAAIAAAA=")
 tile_set = SubResource("TileSet_lnu2h")
 
-[node name="Platform" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(249, 118)
+[node name="Platforms" type="Node2D" parent="."]
 
-[node name="Platform2" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(249, 64)
+[node name="Platform" parent="Platforms" instance=ExtResource("3_lnu2h")]
+position = Vector2(205, -33)
 
-[node name="Platform3" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(249, 12)
+[node name="Platform2" parent="Platforms" instance=ExtResource("3_lnu2h")]
+position = Vector2(205, -151)
 
-[node name="Platform4" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(249, -42)
-
-[node name="Platform5" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(249, -89)
-
-[node name="MovePlatform" parent="." instance=ExtResource("3_lnu2h")]
+[node name="MovePlatform" parent="Platforms" instance=ExtResource("3_lnu2h")]
 position = Vector2(-141, -141)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MovePlatform"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/MovePlatform"]
 libraries = {
-&"": SubResource("AnimationLibrary_iywne")
+"": SubResource("AnimationLibrary_iywne")
 }
 autoplay = "Move"
+
+[node name="Coins" type="Node2D" parent="."]
+position = Vector2(-173, 2)
+
+[node name="Coin" parent="Coins" instance=ExtResource("4_2xyu4")]
+
+[node name="Coin4" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(-19, 0)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(-41, 0)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(-60, 0)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(-161, 0)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(-60, -17)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(-161, -17)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(348, 0)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("4_2xyu4")]
+position = Vector2(348, 0)
+
+[node name="Coins2" type="Node2D" parent="."]
+position = Vector2(-173, 2)
+
+[node name="Coin" parent="Coins2" instance=ExtResource("4_2xyu4")]
+
+[node name="Coin4" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-19, 0)
+
+[node name="Coin5" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-41, 0)
+
+[node name="Coin6" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-83, 0)
+
+[node name="Coin7" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-101, 0)
+
+[node name="Coin8" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-120, 0)
+
+[node name="Coin9" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-142, 0)
+
+[node name="Coin10" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-184, 0)
+
+[node name="Coin11" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(0, -17)
+
+[node name="Coin12" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-19, -17)
+
+[node name="Coin13" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-41, -17)
+
+[node name="Coin14" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-83, -17)
+
+[node name="Coin15" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-101, -17)
+
+[node name="Coin16" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-120, -17)
+
+[node name="Coin17" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-142, -17)
+
+[node name="Coin18" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-184, -17)
+
+[node name="Coin2" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(348, 0)
+
+[node name="Coin3" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(348, 0)
+
+[node name="Coin19" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(446, -119)
+
+[node name="Coin20" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(420, -225)
+
+[node name="Coin21" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(236, -246)
+
+[node name="Coin22" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(152, -246)
+
+[node name="Coin23" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(5, -246)
+
+[node name="Coin24" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-91, -246)
+
+[node name="Coin25" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-33, -283)
+
+[node name="Coin26" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-197, -246)
+
+[node name="Coin27" parent="Coins2" instance=ExtResource("4_2xyu4")]
+position = Vector2(-245, -246)
