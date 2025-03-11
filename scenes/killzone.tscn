@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdmv5tnkgvi3d"]
+[gd_scene load_steps=3 format=3 uid="uid://cdmv5tnkgvi3d"]
 
 [ext_resource type="Script" path="res://scripts/killzone.gd" id="1_mj4d1"]
+[ext_resource type="AudioStream" uid="uid://5iqxpobbek3g" path="res://assets/nami_runner/audio/Cryptic Puzzle.mp3" id="2_eci0o"]
 
 [node name="Killzone" type="Area2D"]
 collision_mask = 2
@@ -9,6 +10,9 @@ script = ExtResource("1_mj4d1")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_eci0o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

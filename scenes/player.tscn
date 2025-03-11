@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dovg3nsjdgcbp"]
+[gd_scene load_steps=11 format=3 uid="uid://dovg3nsjdgcbp"]
 
 [ext_resource type="Texture2D" uid="uid://h35lsjhfjh62" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://cp83eg866dpb4" path="res://assets/nami_runner/audio/jump.mp3" id="3_bb6q1"]
+[ext_resource type="AudioStream" uid="uid://b2hpliar6u6tr" path="res://assets/sounds/coin.wav" id="4_337pa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -53,7 +55,14 @@ sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.262858
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_fjrip")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bb6q1")
+
+[node name="CoinAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_337pa")
