@@ -5,9 +5,9 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	Engine.time_scale = 1.5
-	if body.die():
-		death_audio.play()
-		timer.start()
+	body.die()
+	death_audio.play()
+	timer.start()
 
 
 func _on_timer_timeout() -> void:
